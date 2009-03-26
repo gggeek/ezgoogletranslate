@@ -1,0 +1,11 @@
+- add button for translation to attribute templates
+
+- allow translate func to work on both textareas and input fields
+
+- allow transl. to take place upon creation of transl. for all attributes
+
+- allow user to pick from-lang when not in from-to mode
+
+- allow to pick different transl. providers (via ini file), eventually using ggwebservices
+
+- allow translation of class-level stuff (eg text for oprions in selections)
