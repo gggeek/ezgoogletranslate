@@ -1,0 +1,14 @@
+eZ Google Translate extension for eZ Publish
+============================================
+
+An extension that allows for esay translation of content.
+
+Based on translation services from Google ($$), Microsoft, Frengly, Mymemory.
+
+
+Technicalities
+--------------
+. uses ezjscore for translation calls, which are proxied from gui to remote services via eZ Publish
+. provides a javascript function "eztranslate" to translate texts
+. by default adds interface elements to the "translate content" page
+. translatabale datataypes: string, text, ...
