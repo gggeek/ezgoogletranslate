@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<software>
+    <metadata>
+        <name>eZ Google Translate</name>
+        <version>0.2</version>
+        <copyright>Copyright (C) 2009-2012 Gaetano Giunta</copyright>
+        <license>GNU General Public License v2.0</license>
+    </metadata>
+
+    <dependencies>
+        <extends>
+        </extends>
+        <requires>
+			<extension name="ezjscore" />
+        </requires>
+    </dependencies>
+
+</software>

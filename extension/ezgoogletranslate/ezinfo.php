@@ -6,11 +6,9 @@ class ezgoogletranslateInfo
     {
         return array(
             'Name' => "eZ Google Translate",
-            'Version' => "0.1",
-            'Copyright' => "Copyright (C) Gaetano Giunta 2009",
-            'License' => "GNU General Public License v2.0",
-            'Accesses the following third-party services' => array (
-                'Google AJAX Language API' => 'Terms of use: http://code.google.com/apis/ajaxlanguage/terms.html'
+            'Version' => "0.2",
+            'Copyright' => "Copyright (C) Gaetano Giunta 2009-2012",
+            'License' => "GNU General Public License v2.0"
             )
         );
     }
