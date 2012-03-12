@@ -6,37 +6,41 @@
  * @license
  */
 
-YUI( YUI3_config ).use('node', 'event', 'io-ez', function( Y )
+YUI( YUI3_config ).use( 'node', 'event', 'io-ez', function( Y )
 {
     /**
+     * The callback function takes 1 parameter: the translated text string
+     * @todo add a failure callback
      */
     window.eztranslate = function( text, from, to, callback, provider )
     {
-        var url = 'googletranslate::translate::' + from + '::' + to;
-        if ( provider != undefined )
+        if ( text != '' )
         {
-            url = url + '::' + provider;
-        }
-        Y.io.ez(
-            url,
+            var url = 'googletranslate::translate::' + from + '::' + to;
+            if ( provider != undefined )
             {
-                "data": "text=" + encodeURIComponent( text ),
-                "on": {
-                    success: function( id, o )
-                    {
-                        if ( o.responseJSON && o.responseJSON.content !== '' )
+                url = url + '::' + provider;
+            }
+            Y.io.ez(
+                url,
+                {
+                    "data": "text=" + encodeURIComponent( text ),
+                    "on": {
+                        success: function( id, o )
                         {
-                            var data = o.responseJSON.content;
-                            /// @todo
-                        }
-                        else
-                        {
-                            alert( o.responseJSON.error_text );
+                            if ( o.responseJSON && o.responseJSON.content !== '' )
+                            {
+                                callback( o.responseJSON.content );
+                            }
+                            else
+                            {
+                                /// @todo log error to js consoles
+                                //alert( o.responseJSON.error_text );
+                            }
                         }
                     }
                 }
-            }
-        );
-        return false;
+            );
+        }
     }
 } );

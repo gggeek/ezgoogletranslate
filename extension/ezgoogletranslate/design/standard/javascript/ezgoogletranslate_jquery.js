@@ -6,29 +6,36 @@
  * @license
  */
 
-function eztranslate( text, from, to, callback, provider )
+/**
+ * The callback function takes 1 parameter: the translated text string
+ * @todo add a failure callback
+ */
+window.eztranslate = function( text, from, to, callback, provider )
 {
-    var url = 'googletranslate::translate::' + from + '::' + to;
-    if ( provider != undefined )
+    if ( text != '' )
     {
-        url = url + '::' + provider;
-    }
-    jQuery.ez(
-        url,
-        /// @todo test: shall we urlencode this?
-        { "text": text },
-        function( data )
+        var url = 'googletranslate::translate::' + from + '::' + to;
+        if ( provider != undefined )
         {
-            if ( data && data.content !== '' )
-            {
-                alert( data.content );
-                /// @todo
-            }
-            else
-            {
-                alert( data.content.error_text );
-            }
+            url = url + '::' + provider;
         }
-    );
-    return false;
+        jQuery.ez(
+            url,
+            /// @todo test: shall we urlencode this using encodeURIComponent?
+            { "text": text },
+            function( data )
+            {
+                if ( data && data.content !== '' )
+                {
+                    /// @todo
+                    callback( data.content );
+                }
+                else
+                {
+                    /// @todo log error to js consoles
+                    //alert( data.error_text );
+                }
+            }
+        );
+    }
 }

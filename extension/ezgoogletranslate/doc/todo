@@ -1,3 +1,33 @@
+phase 1:
+
+. add caching to ms auth token
+
+. hook js code to templates
+  . more datatypes / in more designs? eg. ezcomments, ezsurvey, eztags, ezflow blocks
+
+. google v2 provider
+
+. test jquery code
+
+phase 2:
+
+. allow translation of content classes
+
+. allow translation of object states
+
+. jsc service to translate many phrases in a single call (for google & ms at least)
+
+. allow js call to provide error callbacks
+
+. add support for guessing languages
+
+. add more services: see http://alternativeto.net/software/frengly/, http://www.speaklike.com, http://stackoverflow.com/questions/6151668/alternative-to-google-translate-api
+
+. "translate" button with lang choice and/or provider choice (enabled via ini?)
+
+
+--- old todo ---
+
 - add button for translation to attribute templates
 
 - allow translate func to work on both textareas and input fields

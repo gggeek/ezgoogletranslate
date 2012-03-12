@@ -48,6 +48,8 @@
         '%from_lang', concat( $from_language_object.name, '&nbsp;<img src="', $from_language_object.locale|flag_icon, '" style="vertical-align: middle;" alt="', $from_language_object.locale, '" />' ),
         '%to_lang', concat( $translation_list[$language_index].locale.intl_language_name, '&nbsp;<img src="', $translation_list[$language_index].language_code|flag_icon, '" style="vertical-align: middle;" alt="', $translation_list[$language_index].language_code, '" />' ) ) )}
 
+    {include uri="design:parts/tsengineload.tpl" from_lang=$from_language_object.locale to_lang=$translation_list[$language_index].language_code}
+
     {/let}
 
 {else}
