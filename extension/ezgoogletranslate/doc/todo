@@ -1,7 +1,5 @@
 phase 1:
 
-. add caching to ms auth token
-
 . hook js code to templates
   . more datatypes / in more designs? eg. ezcomments, ezsurvey, eztags, ezflow blocks
 
@@ -21,7 +19,11 @@ phase 2:
 
 . add support for guessing languages
 
-. add more services: see http://alternativeto.net/software/frengly/, http://www.speaklike.com, http://stackoverflow.com/questions/6151668/alternative-to-google-translate-api
+. add more services: see
+  http://alternativeto.net/software/frengly/
+  http://www.speaklike.com
+  http://stackoverflow.com/questions/6151668/alternative-to-google-translate-api
+  http://developer.dictionary.com/
 
 . "translate" button with lang choice and/or provider choice (enabled via ini?)
 

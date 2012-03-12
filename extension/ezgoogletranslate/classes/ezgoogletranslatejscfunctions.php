@@ -193,6 +193,25 @@ class eZGoogleTranslateJSCFunctions
     /// @todo cache this for no longer than 10 minutes
     protected static function getMSAdmToken()
     {
+        $cachefile =  eZSys::cacheDirectory() . '/ezgoogletranslate/auth_tokens.php';
+        $clusterfile = eZClusterFileHandler::instance( $cachefile );
+        if ( $clusterfile->exists() )
+        {
+            // go for safer option: no include/eval usage
+            $cachecontents = json_decode( $clusterfile->fetchContents(), true );
+            if ( isset( $cachecontents['microsofttranslator'] ) )
+            {
+                if ( time() <= $cachecontents['microsofttranslator']['ttl'] + $cachecontents['microsofttranslator']['mtime'] )
+                {
+                    return $cachecontents['microsofttranslator']['access_token'];
+                }
+            }
+        }
+        else
+        {
+            $cachecontents = array();
+        }
+
         if ( !in_array( 'https', stream_get_wrappers() ) )
         {
             eZDebug::writeError( "HTTPS stream wrapper not installed, can not get MS Auth token", __METHOD__ );
@@ -202,22 +221,30 @@ class eZGoogleTranslateJSCFunctions
         $ini = eZINI::instance( 'ezgoogletranslate.ini' );
         $url = 'https://datamarket.accesscontrol.windows.net/v2/OAuth2-13/';
         $opts = array(
-                   'http' => array(
-                       'method'  => 'POST',
-                       'header'  => 'Content-type: application/x-www-form-urlencoded',
-                       'content' => http_build_query( array(
-                           'client_id' => $ini->variable( 'MicrosoftCredentials', 'ClientId' ),
-                           'client_secret' => $ini->variable( 'MicrosoftCredentials', 'ClientSecret' ),
-                           'scope' => 'http://api.microsofttranslator.com',
-                           'grant_type' => 'client_credentials'
-                       ) )
-                   )
-               );
+            'http' => array(
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => http_build_query( array(
+                    'client_id' => $ini->variable( 'MicrosoftCredentials', 'ClientId' ),
+                    'client_secret' => $ini->variable( 'MicrosoftCredentials', 'ClientSecret' ),
+                    'scope' => 'http://api.microsofttranslator.com',
+                    'grant_type' => 'client_credentials'
+                    )
+                )
+            )
+        );
         $context = stream_context_create( $opts );
         $text = file_get_contents( $url, false, $context );
         $data = json_decode( $text, true );
         if ( isset( $data['access_token'] ) )
         {
+            $cachecontents = array_merge( $cachecontents, array(
+                'microsofttranslator' => array(
+                    'access_token' => $data['access_token'],
+                    'ttl' => $data['expires_in '] - 5, // safety measure for network latencies
+                    'mtime' => time()
+                ) ) );
+            $clusterfile->fileStoreContents( $cachefile, json_encode( $cachecontents ) );
             return $data['access_token'];
         }
         else

@@ -5,6 +5,9 @@ An extension that allows for esay translation of content.
 
 Based on translation services from Google ($$), Microsoft, Frengly, Mymemory.
 
+Please note that not all of these services support translation from/to all languages.
+Also they might have limitatins on the number of translation requests per day.
+
 
 Requirements
 ------------
