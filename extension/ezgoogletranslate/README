@@ -12,7 +12,7 @@ Also they might have limitatins on the number of translation requests per day.
 Requirements
 ------------
 . eZJSCore extension
-. eZPubish 4.x (NB: the provided templates have been tested with eZP 4.6 only)
+. eZPubish 4.x (NB: the provided templates have been tested with eZP 4.6 and 2012.1 only)
 . for most translation providers, an account has to be created
 
 

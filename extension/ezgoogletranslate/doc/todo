@@ -1,23 +1,26 @@
 phase 1:
 
-. hook js code to templates
-  . more datatypes / in more designs? eg. ezcomments, ezsurvey, eztags, ezflow blocks
-
 . google v2 provider
 
 . test jquery code
 
 phase 2:
 
-. allow translation of content classes
+. more datatypes / in more designs? eg. ezxml, ezcomments, ezsurvey, eztags, ezflow blocks
 
-. allow translation of object states
+. only patch content/edit_attribute.tpl and not content/edit.tpl to minimize compatibility pains
+
+. add translation of content classes
+
+. add translation of object states
 
 . jsc service to translate many phrases in a single call (for google & ms at least)
 
 . allow js call to provide error callbacks
 
 . add support for guessing languages
+
+. add support for translating html, for the services that support it
 
 . add more services: see
   http://alternativeto.net/software/frengly/
@@ -26,18 +29,3 @@ phase 2:
   http://developer.dictionary.com/
 
 . "translate" button with lang choice and/or provider choice (enabled via ini?)
-
-
---- old todo ---
-
-- add button for translation to attribute templates
-
-- allow translate func to work on both textareas and input fields
-
-- allow transl. to take place upon creation of transl. for all attributes
-
-- allow user to pick from-lang when not in from-to mode
-
-- allow to pick different transl. providers (via ini file), eventually using ggwebservices
-
-- allow translation of class-level stuff (eg text for oprions in selections)
