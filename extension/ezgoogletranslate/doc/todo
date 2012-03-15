@@ -29,3 +29,5 @@ phase 2:
   http://developer.dictionary.com/
 
 . "translate" button with lang choice and/or provider choice (enabled via ini?)
+
+. fetch function for translations
