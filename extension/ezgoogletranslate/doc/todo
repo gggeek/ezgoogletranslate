@@ -4,6 +4,9 @@ phase 1:
 
 . test jquery code
 
+. allow ezimage to be overridden differently if ezie is active
+
+
 phase 2:
 
 . more datatypes / in more designs? eg. ezxml, ezcomments, ezsurvey, eztags, ezflow blocks
