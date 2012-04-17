@@ -1,0 +1,9 @@
+1 - activate the extension following the standard eZ Publish procedures
+    (remember to regenerate the ezp_extension.php autoload file)
+
+2 - clear the template cache
+
+
+3 - configure ezgoogletranslate.ini.append.php for the desired translation provider
+  . you will need a free Azure key for microsoft translator. See: http://www.microsofttranslator.com
+  . the googletranslate key is otoh pay for: http://code.google.com/apis/language/translate/overview.html
